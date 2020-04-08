@@ -22,14 +22,6 @@ public class Ejercicio1 {
             System.out.print(numeros[i]+", ");
         }
 
-
-
     }
-
-    //int [] numeros = new int[10];
-
-
-    //public int[] ordenar() {
-        //return new int[] {};
 
 }
