@@ -3,7 +3,7 @@ package ar.edu.unahur.obj2.ejercicio1;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Ejercicio1 {
+public class Ejercicio1_1 {
 
     public static void main(String [] args){
 
