@@ -1,4 +1,4 @@
-package ar.edu.unahur.obj2.ejercicio1;
+package ejercicios1;
 
 import java.util.Arrays;
 import java.util.Scanner;
