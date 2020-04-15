@@ -26,8 +26,6 @@ class Datos{
 
     String [] companieros;
 
-
-
     void ingresarDatos(){
 
         System.out.println("Ingrese la cantidad de companieros: ");
@@ -42,7 +40,7 @@ class Datos{
             companieros[i]=ingreso.nextLine();
 
         }
-        
+
     }
 
     void mostrarNombres(){
@@ -61,6 +59,8 @@ class Datos{
             }
 
         }
+
+        System.out.println("FIN");
 
     }
 
