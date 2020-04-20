@@ -59,7 +59,7 @@ class DatosDeEmpleados {
 
         int dato = 0;
 
-        while (dato == 0) {
+        while (dato == 0){
 
             Empleado empleado;
 
@@ -67,7 +67,7 @@ class DatosDeEmpleados {
 
             String tipo = ingreso.nextLine();
 
-            if (tipo.equalsIgnoreCase("A")) {
+            if (tipo.equalsIgnoreCase("A")){
                 empleado = new Administrativo();
             } else {
                 empleado = new Vendedor();
