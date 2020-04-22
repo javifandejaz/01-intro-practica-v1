@@ -18,67 +18,68 @@ public class Supermercado {
 
 class LineaTicket{
 
-    Scanner ingreso= new Scanner(System.in);
-
     String nombre;
     double precio;
     int cantidad;
     double subTotal;
 
-    void nombre(){
-        nombre=ingreso.nextLine();
-    }
-    void precio(){
-        precio=ingreso.nextDouble();
-    }
-    void cantidad(){
-        cantidad=ingreso.nextInt();
-    }
-    void subTotal(){
-        subTotal = precio * cantidad;
+    public LineaTicket(String nombre, double precio, int cantidad, double subTotal){
+
+        this.nombre=nombre;
+        this.precio=precio;
+        this.cantidad=cantidad;
+        this.subTotal=subTotal;
+
     }
 
 }
 
 
-class Ticket extends LineaTicket{
+class Ticket {
 
-    List<LineaTicket> lineas = new ArrayList<>();
+    Scanner ingreso = new Scanner(System.in);
+
+    List <LineaTicket> linea = new ArrayList<>();
+
     double total;
 
     void cargaProductos(){
 
         while(true){
 
-            LineaTicket linea = new LineaTicket();
-
             System.out.print("Ingrese el nombre: ");
-            linea.nombre();
+            String nombre=ingreso.nextLine();
 
             System.out.print("Ingrese el precio: ");
-            linea.precio();
+            double precio=ingreso.nextDouble();
 
             System.out.print("Ingrese la cantidad: ");
-            linea.cantidad();
+            int cantidad=ingreso.nextInt();
 
-            linea.subTotal();
+            double subTotal=precio*cantidad;
 
-            lineas.add(linea);
+            linea.add(new LineaTicket(nombre, precio, cantidad, subTotal));
 
             System.out.println("ingrese '1' si desea continuar o '0' para finalizar");
+
             int opcion=ingreso.nextInt();
+            ingreso.nextLine();
             if(opcion!= 1){
                 break;
             }
 
         }
-        total= lineas.stream().mapToDouble(x->x.subTotal).sum();
+        total= linea.stream().mapToDouble(x->x.subTotal).sum();
+
         this.imprimeTicket();
     }
 
     void imprimeTicket(){
+        
         String formato="Producto: %-10s  Cantidad: %3d  Total: %6.2f";
-        lineas.forEach(linea -> System.out.println(String.format(formato,linea.nombre,linea.cantidad,linea.subTotal)));
+
+        linea.forEach(linea -> System.out.println(String.format(formato,linea.nombre,linea.cantidad,linea.subTotal)));
+
         System.out.println(String.format("************* Total de la compra: $%10.2f",total));
     }
 
