@@ -1,5 +1,7 @@
 package ejercicio2_1;
 
+import com.sun.deploy.util.StringUtils;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -36,9 +38,11 @@ abstract class Empleado{
     }
     void nombre(){
         nombre=ingreso.nextLine();
+        nombre= nombre.substring(0,1).toUpperCase()+nombre.substring(1).toLowerCase();
     }
     void apellido(){
         apellido=ingreso.nextLine();
+        apellido= apellido.substring(0,1).toUpperCase()+apellido.substring(1).toLowerCase();
     }
     void email(){
         email=ingreso.nextLine();
@@ -99,8 +103,18 @@ class DatosDeEmpleados {
     }
     void listar(){
 
-        listaDeEmpleados.forEach(empleado -> System.out.println(" Empleado: "+empleado.dni+" "
-                +empleado.nombre+" "+empleado.apellido+" sueldo:"+empleado.getSueldo()));
+        //iNTENTO DE FORMAT
+
+        String formato="Dni: %d\tNombre: %s\tApellido: %s\tSueldo: %.2f";
+
+        listaDeEmpleados.forEach(empleado ->
+                System.out.println(String.format
+                        (formato,+empleado.dni,empleado.nombre,empleado.apellido,empleado.getSueldo())));
+
+        //PREFIERO ESTA FORMA:
+
+        //listaDeEmpleados.forEach(empleado -> System.out.println(" Empleado: "+empleado.dni+" "
+          //      +empleado.nombre+" "+empleado.apellido+" sueldo:"+empleado.getSueldo()));
 
     }
 
