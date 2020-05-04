@@ -31,6 +31,7 @@ abstract class Empleado{
     double sueldoBase;
 
     abstract double getSueldo();
+    abstract void paraSueldo();
 
     void dni(){
         dni=ingreso.nextInt();
@@ -48,7 +49,7 @@ abstract class Empleado{
         email=ingreso.nextLine();
     }
     void sueldoBase(){
-        sueldoBase=ingreso.nextInt();
+        sueldoBase=ingreso.nextDouble();
     }
 
 
@@ -63,7 +64,7 @@ class DatosDeEmpleados {
 
         int dato = 0;
 
-        while (dato == 0){
+        while (dato < 21){
 
             Empleado empleado;
 
@@ -92,11 +93,20 @@ class DatosDeEmpleados {
             System.out.print("Ingrese el sueldo base: ");
             empleado.sueldoBase();
 
+            empleado.paraSueldo();
+
             listaDeEmpleados.add(empleado);
 
-            System.out.println("Presione 0 para continuar o 1 para finalizar ");
-
+            System.out.println("Presione '1' para continuar o '0' para finalizar ");
             dato=ingreso.nextInt();
+
+            if( dato== 1){
+
+                dato+=1;
+            }
+            else{
+                dato=30;
+            }
 
             ingreso.nextLine();
         }
@@ -105,7 +115,7 @@ class DatosDeEmpleados {
 
         //iNTENTO DE FORMAT
 
-        String formato="Dni: %d\tNombre: %s\tApellido: %s\tSueldo: %.2f";
+        String formato="Dni: %-10d Nombre: %-10s Apellido: %-10s Sueldo: %-15.2f";
 
         listaDeEmpleados.forEach(empleado ->
                 System.out.println(String.format
@@ -134,6 +144,10 @@ class Administrativo extends Empleado{
         System.out.print("Indique la cantidad de horas trabajadas: ");
         hsMes=ingreso.nextInt();
     }
+    void paraSueldo(){
+        this.setHsExtra();
+        this.setHsMes();
+    }
     double getSueldo(){
         return sueldoBase * ((hsExtra * 1.5)+hsMes) / hsMes;
     }
@@ -143,8 +157,9 @@ class Administrativo extends Empleado{
 
 class Vendedor extends Empleado {
 
-    double porcenComision=0.10;
-    int totalVtas=250000;
+    double porcenComision;
+    double totalVtas;
+    double sueldo;
 
     void setPorcenComision(){
         System.out.print("Indique el porcentaje de comision: ");
@@ -154,7 +169,13 @@ class Vendedor extends Empleado {
         System.out.print("Indique el total de las ventas: ");
         totalVtas=ingreso.nextInt();
     }
+
+    void paraSueldo(){
+        this.setPorcenComision();
+        this.setTotalVtas();
+    }
     double getSueldo(){
+
         return sueldoBase + (porcenComision*totalVtas/100);
     }
 

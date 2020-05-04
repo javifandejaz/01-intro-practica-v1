@@ -21,10 +21,10 @@ public class EmpresasYEmpleados {
                     "4. Listado detallado de empresas y empleados.\n" +
                     "5. Salir\n");
 
-            int opcionElejida=ingreso.nextInt();
+            int opcionElegida=ingreso.nextInt();
             ingreso.nextLine();
 
-            if (opcionElejida==1){
+            if (opcionElegida==1){
 
                 System.out.print("Ingrese el nombre de la nueva empresa: ");
                 String nombre = ingreso.nextLine();
@@ -35,7 +35,7 @@ public class EmpresasYEmpleados {
                 System.out.println("Se ha ingresado una nueva empresa\n");
             }
 
-            else if(opcionElejida==2){
+            else if(opcionElegida==2){
 
                 System.out.print("Ingrese el nombre de la empresa: ");
                 String nombre = ingreso.nextLine();
@@ -43,13 +43,13 @@ public class EmpresasYEmpleados {
                 for (Empresa e : empresas){
                     if (e.nombre.equalsIgnoreCase(nombre)) {
 
-                        System.out.print("Ingrese el nombre del empleado:");
+                        System.out.print("Ingrese el nombre del empleado: ");
                         String nombre_empleado = ingreso.nextLine();
-                        System.out.print("Ingrese el apellido del empleado:");
+                        System.out.print("Ingrese el apellido del empleado: ");
                         String apellido_empleado = ingreso.nextLine();
-                        System.out.print("Ingrese la fecha de nacimiento del empleado:");
+                        System.out.print("Ingrese la fecha de nacimiento del empleado: ");
                         String fecha_nacimiento_empleado = ingreso.nextLine();
-                        System.out.print("Ingrese la fecha del contrato del empleado:");
+                        System.out.print("Ingrese la fecha del contrato del empleado: ");
                         String fecha_contrato_empleado = ingreso.nextLine();
 
                         Empleado empleado =
@@ -61,7 +61,7 @@ public class EmpresasYEmpleados {
 
             }
 
-            else if(opcionElejida==3){
+            else if(opcionElegida==3){
 
                 System.out.println("A continuación se muestran las empresas ingresadas:\n");
 
@@ -72,7 +72,7 @@ public class EmpresasYEmpleados {
                 ingreso.nextLine();
             }
 
-            else if(opcionElejida==4){
+            else if(opcionElegida==4){
 
                 System.out.println("A continuación se muestran las empresas  y sus empleados:\n");
 
@@ -89,7 +89,7 @@ public class EmpresasYEmpleados {
                 ingreso.nextLine();
             }
 
-            else if(opcionElejida==5){
+            else if(opcionElegida==5){
 
                 System.out.println("Sesión finalizada\n");
                 System.out.println("Ingrese Enter para continuar");
